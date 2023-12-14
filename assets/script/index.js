@@ -19,7 +19,7 @@ function addMarker(coordinates) {
         color: "#860D0D",
         width: '10px',
         height: '10px',
-        draggable: true
+        draggable: false
         }).setLngLat(coordinates)
         .addTo(map);
     // const el = document.createElement('div');
@@ -33,7 +33,7 @@ function addMarker(coordinates) {
 function getLocation(position) {
     let { latitude, longitude } = position.coords;
     userLocation = [longitude, latitude];
-    map.flyTo({ center: userLocation, zoom: 14 });
+    map.flyTo({ center: userLocation, zoom: 16 });
     addMarker(userLocation);
 }
 
@@ -52,6 +52,13 @@ setTimeout(() => {
         alert('Browser does not support geolocation');
     }
 }, 1000);
+
+
+map.dragPan.disable();
+map.keyboard.disable();
+map.scrollZoom.disable();
+map.doubleClickZoom.disable();
+map.touchZoomRotate.disable();
 
 map.addControl(
     new mapboxgl.GeolocateControl({
