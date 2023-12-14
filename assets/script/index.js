@@ -56,7 +56,8 @@ setTimeout(() => {
 map.addControl(
     new mapboxgl.GeolocateControl({
         positionOptions: {
-            enableHighAccuracy: true
+            enableHighAccuracy: true,
+            maximumAge: 0
         },
         trackUserLocation: true,
         showUserHeading: true
